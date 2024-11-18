@@ -1,8 +1,8 @@
-const express = require('express');
+import express from 'express'
 import * as expressController from '../controllers/expressController.js'
 
 const router = express.Router();
 
-router.get('/express', expressController.expressController);
+router.get('/', expressController.expressController);
 
 export default router;

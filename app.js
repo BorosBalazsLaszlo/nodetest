@@ -1,17 +1,17 @@
-const express = require('express');
-import expressRoute from ('./routes/expressRoute');
-import greetingRoute from ('./routes/greetingRoute');
-import nodejsRoute from ('./routes/nodejsRoute');
-import apiRoute from ('./routes/apiRoute');
+import express from 'express'
+const path = require('path');
+import expressRoute from './routes/expressRoute.js';
+import greetingRoute from './routes/greetingRoute.js';
+import nodejsRoute from './routes/nodejsRoute.js';
+import apiRoute from './routes/apiRoute.js';
 
 const app = express();
 
 const PORT = 3000;
 
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(express.static('public'));
-
-app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -20,8 +20,8 @@ app.get('/', (req, res) => {
 app.use('/express', expressRoute);
 app.use('/greeting', greetingRoute);
 app.use('/nodejs', nodejsRoute);
-app.use(apiRoute);
+app.use('/api', apiRoute);
 
-app.listen(PORT, () =>{
-    console.log('app is listening on localhost:3000')
+app.listen(PORT, () => {
+  console.log(`App is listening on localhost:${PORT}`);
 });
