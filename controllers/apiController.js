@@ -4,11 +4,11 @@ let users = [
   { id: "3", name: "Sam Johnson" },
 ];
 
-exports.getAllUsers = (req, res) => {
+export const getAllUsers = (req, res) => {
   res.status(200).json(users);
 };
 
-exports.getUserById = (req, res) => {
+export const getUserById = (req, res) => {
   const user = users.find((u) => u.id === req.params.id);
   if (user) {
     res.status(200).json(user);
@@ -17,13 +17,13 @@ exports.getUserById = (req, res) => {
   }
 };
 
-exports.createUser = (req, res) => {
+export const createUser = (req, res) => {
   const newUser = { id: (users.length + 1).toString(), name: req.body.name };
   users.push(newUser);
   res.status(201).json(newUser);
 };
 
-exports.updateUser = (req, res) => {
+export const updateUser = (req, res) => {
   const user = users.find((u) => u.id === req.params.id);
   if (user) {
     user.name = req.body.name;
@@ -33,7 +33,7 @@ exports.updateUser = (req, res) => {
   }
 };
 
-exports.deleteUser = (req, res) => {
+export const deleteUser = (req, res) => {
   const userIndex = users.findIndex((u) => u.id === req.params.id);
   if (userIndex !== -1) {
     users.splice(userIndex, 1);

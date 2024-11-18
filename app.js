@@ -1,5 +1,5 @@
-import express from 'express'
-const path = require('path');
+import express from 'express';
+import path from 'path';
 import expressRoute from './routes/expressRoute.js';
 import greetingRoute from './routes/greetingRoute.js';
 import nodejsRoute from './routes/nodejsRoute.js';
